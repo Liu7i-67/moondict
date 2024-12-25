@@ -1,3 +1,5 @@
+import {Alert, Platform, ToastAndroid} from 'react-native';
+
 export function to<T, U = Error>(
   promise: Promise<T>,
   errorExt?: object,
@@ -12,3 +14,18 @@ export function to<T, U = Error>(
       return [err, undefined];
     });
 }
+
+export const message = (str: string) => {
+  if (Platform.OS === 'android') {
+    ToastAndroid.showWithGravityAndOffset(
+      str,
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
+    return;
+  }
+
+  Alert.alert(str);
+};

@@ -19,3 +19,10 @@ export interface IOrginWord {
 }
 
 export interface IWord extends IOrginWord {}
+
+export interface IPagination {
+  /** @param 每页条目 */
+  pageSize: number;
+  /** @param 当前页码 */
+  index: number;
+}

@@ -2,11 +2,11 @@ import React from 'react';
 import {observer, useWhen, when} from '@quarkunlimit/qu-mobx';
 import type {IHomeProps} from './interface';
 import {Provider, useStore} from './store/RootStore';
-import {FlatList, Pressable, ScrollView, View} from 'react-native';
-import {QText} from '../../components/QText';
+import {FlatList, View} from 'react-native';
 import {Empty} from './modules/Empty';
 import {WordItem} from './modules/WordItem';
 import {ScrollToTop} from './modules/ScrollToTop';
+import {Filter} from './modules/Filter';
 
 const Home = observer(function Home_(props: IHomeProps) {
   const root = useStore();
@@ -24,7 +24,7 @@ const Home = observer(function Home_(props: IHomeProps) {
       <FlatList
         ref={refs.listRef}
         style={{padding: 8}}
-        ListHeaderComponent={<View style={{height: 30}}></View>}
+        ListHeaderComponent={<View style={{height: 40}}></View>}
         initialNumToRender={15}
         onEndReached={logic.showMore}
         onEndReachedThreshold={0.4}
@@ -33,6 +33,7 @@ const Home = observer(function Home_(props: IHomeProps) {
         renderItem={({item}) => <WordItem item={item} />}
         keyExtractor={item => item.no.toString()}></FlatList>
       <ScrollToTop />
+      <Filter />
     </View>
   );
 });
