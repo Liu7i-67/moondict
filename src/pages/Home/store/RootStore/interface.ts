@@ -4,7 +4,7 @@ import {Logic} from './Logic';
 import {Computed} from './Computed';
 import {GlobalStore} from '../../../../globalStore';
 import {FlatList} from 'react-native';
-import {IOrginWord} from '../../../../interface';
+import {IOrginWord, IPagination, IWord} from '../../../../interface';
 
 export type TLoadingStore = LoadingStore<'loading' | 'init' | 'saveData'>;
 
@@ -14,6 +14,8 @@ export interface ILogic {
   rootStore: RootStore;
   /** @param 字列表 */
   words: IOrginWord[];
+  /** @param 分页信息 */
+  pagination: IPagination;
   /** @function 初始化数据 */
   init(): void;
 }
@@ -33,27 +35,5 @@ export interface IRootStore {
 }
 
 export interface IRefs {
-  listRef: React.MutableRefObject<FlatList<IArceusMark> | null>;
-}
-
-export interface IArceusMark {
-  /** @param 洗翠编号 */
-  no: string;
-  /** @param 全国编号 */
-  globalNo: string;
-  /** @param 名称 */
-  name: string;
-  /** @param 属性 */
-  attrs: string[];
-  /** @param 状态 0-未捕获 1-已捕获 2-已完成 */
-  status: number;
-  /** @param 图像编号 */
-  imageNo: number;
-}
-
-export interface IPagination {
-  /** @param 每页条目 */
-  pageSize: number;
-  /** @param 当前页码 */
-  index: number;
+  listRef: React.MutableRefObject<FlatList<IWord> | null>;
 }
