@@ -26,3 +26,10 @@ export interface IPagination {
   /** @param 当前页码 */
   index: number;
 }
+
+export interface IWordType {
+  /** @param 拼音前缀 */
+  type: string;
+  /** @param 拼音 */
+  option: string[];
+}

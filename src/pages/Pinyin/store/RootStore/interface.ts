@@ -3,6 +3,7 @@ import {RootStore} from './';
 import {Logic} from './Logic';
 import {Computed} from './Computed';
 import {GlobalStore} from '../../../../globalStore';
+import {IWordType} from '../../../../interface';
 
 export type TLoadingStore = LoadingStore<'loading'>;
 
@@ -10,6 +11,10 @@ export type TLoadingStore = LoadingStore<'loading'>;
 export interface ILogic {
   loadingStore: TLoadingStore;
   rootStore: RootStore;
+  /** @param 分类数据 */
+  typeData: IWordType[];
+  /** @function 初始化页面数据 */
+  init(): void;
 }
 
 /** 计算属性接口 */

@@ -5,8 +5,10 @@ export const globalColor = {
   text: '#333',
   /** @param 背景颜色 */
   background: '#fff',
+  /** @param 深色背景 */
+  bg2: '#dddddd',
   /** @param 链接颜色 */
-  click: '#43c4eb',
+  click: '#008042',
   /** @param 边框颜色 */
   border: '#eeeeee',
 };
