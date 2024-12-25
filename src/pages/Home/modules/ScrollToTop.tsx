@@ -2,15 +2,16 @@ import React from 'react';
 import {observer} from '@quarkunlimit/qu-mobx';
 import {useStore} from '../store/RootStore';
 import {TouchableOpacity} from 'react-native';
-import {QText} from '../../../components/QText';
 import {globalColor} from '../../../globalStyle';
+import {QIcon} from '../../../components/QIcon';
 
 export const ScrollToTop = observer(function ScrollToTop_() {
   const root = useStore();
   const {refs} = root;
 
   return (
-    <TouchableOpacity
+    <QIcon
+      icon="to_top"
       style={{
         position: 'absolute',
         right: 20,
@@ -24,8 +25,6 @@ export const ScrollToTop = observer(function ScrollToTop_() {
         refs.listRef.current?.scrollToOffset?.({
           offset: 0,
         })
-      }>
-      <QText>顶</QText>
-    </TouchableOpacity>
+      }></QIcon>
   );
 });

@@ -8,6 +8,10 @@ export const Footer = observer(function Footer_() {
   const root = useStore();
   const {computed} = root;
 
+  if (!computed.showList.length) {
+    return null;
+  }
+
   return (
     <View style={{paddingBottom: 32}}>
       <QText style={{textAlign: 'center'}}>

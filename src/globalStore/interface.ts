@@ -38,6 +38,8 @@ export interface ILogic {
   init(): void;
   /** @function 选择过滤分类 */
   selectFilterType(type: string): void;
+  /** @function 修改查看模式 */
+  changeCompact(): void;
 }
 
 /** 计算属性接口 */

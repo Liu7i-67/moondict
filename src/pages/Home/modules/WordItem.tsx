@@ -10,8 +10,26 @@ import {message} from '../../../utils/tools';
 
 export const WordItem = observer(function WordItem_(props: {item: IWord}) {
   const root = useStore();
-  const {logic} = root;
+  const {global} = root;
   const {item} = props;
+
+  if (global.logic.filter.compact) {
+    return (
+      <ImageBackground
+        source={require('../../../assets/imgs/mi.png')}
+        style={{
+          width: 30,
+          height: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingRight: 4,
+          marginBottom: 4,
+          marginRight: 4,
+        }}>
+        <QText style={{fontSize: 16}}> {item.word}</QText>
+      </ImageBackground>
+    );
+  }
 
   return (
     <View

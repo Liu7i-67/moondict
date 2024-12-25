@@ -37,4 +37,6 @@ export interface IWordType {
 export interface IFilter {
   /** @param 当前选中的拼音 */
   type: string;
+  /** @param 紧凑模式 */
+  compact: boolean;
 }

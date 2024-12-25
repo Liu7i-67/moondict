@@ -7,11 +7,12 @@ export class Logic implements ILogic {
   rootStore: GlobalStore;
   loading = false;
   loadingText = '加载中...';
-  currentPage: EPage = EPage.Pinyin;
+  currentPage: EPage = EPage.Home;
   backCount = 0;
   renderPage: Set<EPage> = new Set();
   filter: IFilter = {
     type: '',
+    compact: true,
   };
 
   constructor(rootStore: GlobalStore) {
@@ -69,6 +70,10 @@ export class Logic implements ILogic {
 
   selectFilterType(type: string) {
     this.filter.type = type;
+  }
+
+  changeCompact() {
+    this.filter.compact = !this.filter.compact;
   }
 }
 /*#__PURE__*/ export function refresh() {}
