@@ -6,13 +6,20 @@
  */
 
 import React, {lazy, Suspense} from 'react';
-import {BackHandler, StyleProp, View, ViewStyle} from 'react-native';
+import {
+  BackHandler,
+  Dimensions,
+  StyleProp,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {globalColor} from './src/globalStyle';
 import {observer, useWhen} from '@quarkunlimit/qu-mobx';
 import {Provider, useStore} from './src/globalStore/index';
 import {LoadingModal} from './src/layout/LoadingModal';
 import {EPage} from './src/interface';
 import {QText} from './src/components/QText';
+import {message} from './src/utils/tools';
 
 const Home = lazy(() => import('./src/pages/Home'));
 const Pinyin = lazy(() => import('./src/pages/Pinyin'));
@@ -34,6 +41,10 @@ const App = observer(function App_(): React.JSX.Element {
         'hardwareBackPress',
         logic.hardwareBackPress,
       );
+      Dimensions.addEventListener('change', ({window}) => {
+        logic.calculatePageSize(window);
+      });
+      logic.calculatePageSize(Dimensions.get('window'));
     },
   );
 

@@ -15,7 +15,7 @@ const Home = observer(function Home_(props: IHomeProps) {
   const {computed, logic, refs, global} = root;
 
   useWhen(
-    () => true,
+    () => global.logic.wordSize.numColumns !== 0,
     () => {
       logic.init();
     },
@@ -25,16 +25,16 @@ const Home = observer(function Home_(props: IHomeProps) {
     logic.resetList();
   }, [global.logic.filter.type, global.logic.filter.compact]);
 
-  const getDom = (m: boolean) => {
+  const getDom = (m: boolean, numColumns: number) => {
     return (
       <FlatList
         ref={refs.listRef}
         style={{padding: 8}}
-        numColumns={m ? 10 : 1}
-        key={m ? 10 : 1}
+        numColumns={m ? numColumns : 1}
+        key={m ? numColumns : 1}
         ListHeaderComponent={<View style={{height: 40}}></View>}
         ListFooterComponent={<Footer />}
-        initialNumToRender={m ? 300 : 20}
+        initialNumToRender={m ? global.logic.wordSize.initialNumToRender : 20}
         onEndReached={logic.showMore}
         onEndReachedThreshold={0.4}
         ListEmptyComponent={<Empty />}
@@ -51,7 +51,7 @@ const Home = observer(function Home_(props: IHomeProps) {
         flex: 1,
         display: global.logic.currentPage === EPage.Home ? 'flex' : 'none',
       }}>
-      {getDom(global.logic.filter.compact)}
+      {getDom(global.logic.filter.compact, global.logic.wordSize.numColumns)}
       <ScrollToTop />
       <Filter />
     </View>

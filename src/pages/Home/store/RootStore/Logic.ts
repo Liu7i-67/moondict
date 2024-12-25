@@ -51,7 +51,9 @@ export class Logic implements ILogic {
   resetList() {
     const {refs, global} = this.rootStore;
     this.pagination.index = 1;
-    this.pagination.pageSize = global.logic.filter.compact ? 500 : 40;
+    this.pagination.pageSize = global.logic.filter.compact
+      ? global.logic.wordSize.pageSize
+      : 40;
     refs.listRef.current?.scrollToOffset({animated: false, offset: 0});
   }
 }

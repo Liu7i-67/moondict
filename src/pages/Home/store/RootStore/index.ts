@@ -4,7 +4,7 @@ import {
   makeAutoObservable,
   useLocalObservable,
 } from '@quarkunlimit/qu-mobx';
-import {IArceusMark, IRefs, IRootStore, TLoadingStore} from './interface';
+import {IRefs, IRootStore, TLoadingStore} from './interface';
 import {Logic} from './Logic';
 import {Computed} from './Computed';
 import {
@@ -13,6 +13,7 @@ import {
 } from '../../../../globalStore/index';
 import {useRef} from 'react';
 import {FlatList} from 'react-native';
+import {IWord} from '../../../../interface';
 
 export class RootStore implements IRootStore {
   logic: Logic;
@@ -32,6 +33,6 @@ export class RootStore implements IRootStore {
 
 export const {Provider, useStore} = createContainer(() => {
   const global = useGloabl();
-  const listRef = useRef<FlatList<IArceusMark>>(null);
+  const listRef = useRef<FlatList<IWord>>(null);
   return useLocalObservable(() => new RootStore(global, {listRef}));
 });

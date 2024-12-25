@@ -1,7 +1,9 @@
 import {makeAutoObservable} from '@quarkunlimit/qu-mobx';
 import {ILogic, TLoadingStore} from './interface';
 import {GlobalStore} from '.';
-import {EPage, IFilter} from '../interface';
+import {EPage, IFilter, ISize} from '../interface';
+import {ScaledSize} from 'react-native';
+import {message} from '../utils/tools';
 export class Logic implements ILogic {
   loadingStore: TLoadingStore;
   rootStore: GlobalStore;
@@ -13,6 +15,12 @@ export class Logic implements ILogic {
   filter: IFilter = {
     type: '',
     compact: true,
+  };
+  wordSize: ISize = {
+    numColumns: 0,
+    rowNums: 10,
+    pageSize: 60,
+    initialNumToRender: 40,
   };
 
   constructor(rootStore: GlobalStore) {
@@ -74,6 +82,22 @@ export class Logic implements ILogic {
 
   changeCompact() {
     this.filter.compact = !this.filter.compact;
+  }
+
+  calculatePageSize(window: ScaledSize) {
+    const w = Math.floor(window.width);
+    const h = Math.floor(window.height);
+
+    const numColumns = Math.floor((w - 16) / 34);
+    const rowNums = Math.floor((h - 16 - 40) / 34);
+    const pageSize = Math.floor(numColumns * rowNums * 1.5);
+    const initialNumToRender = numColumns * rowNums;
+    this.wordSize = {
+      numColumns,
+      rowNums,
+      pageSize,
+      initialNumToRender,
+    };
   }
 }
 /*#__PURE__*/ export function refresh() {}

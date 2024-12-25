@@ -40,3 +40,14 @@ export interface IFilter {
   /** @param 紧凑模式 */
   compact: boolean;
 }
+
+export interface ISize {
+  /** @param 每行多少个 */
+  numColumns: number;
+  /** @param 一共多少行 */
+  rowNums: number;
+  /** @param 分页数量 */
+  pageSize: number;
+  /** @param 首屏加载数量 */
+  initialNumToRender: number;
+}
