@@ -35,7 +35,7 @@ export const WordItem = observer(function WordItem_(props: {item: IWord}) {
           }}>
           <QText style={{fontSize: 16}}> {item.word}</QText>
         </ImageBackground>
-        <QText style={{width: 40, marginLeft: 16}}> {item.affix}</QText>
+        <QText style={{width: 30, marginLeft: 16}}> {item.affix}</QText>
         <QText style={{width: 90, marginLeft: 16}}>笔画 {item.strokes}</QText>
         <Pressable
           onPress={() => {

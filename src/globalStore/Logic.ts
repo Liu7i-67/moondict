@@ -7,13 +7,19 @@ export class Logic implements ILogic {
   rootStore: GlobalStore;
   loading = false;
   loadingText = '加载中...';
-  currentPage: EPage = EPage.Home;
+  currentPage: EPage = EPage.Pinyin;
   backCount = 0;
+  renderPage: Set<EPage> = new Set();
 
   constructor(rootStore: GlobalStore) {
     this.rootStore = rootStore;
     this.loadingStore = rootStore.loadingStore;
     makeAutoObservable(this, {}, {autoBind: true});
+  }
+
+  init() {
+    this.renderPage = new Set();
+    this.renderPage.add(this.currentPage);
   }
 
   clearBackCount() {
@@ -26,6 +32,7 @@ export class Logic implements ILogic {
 
   changePage(page: EPage) {
     this.currentPage = page;
+    this.renderPage.add(this.currentPage);
   }
 
   backHome() {

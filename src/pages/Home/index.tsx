@@ -7,10 +7,11 @@ import {Empty} from './modules/Empty';
 import {WordItem} from './modules/WordItem';
 import {ScrollToTop} from './modules/ScrollToTop';
 import {Filter} from './modules/Filter';
+import {EPage} from '../../interface';
 
 const Home = observer(function Home_(props: IHomeProps) {
   const root = useStore();
-  const {computed, logic, refs} = root;
+  const {computed, logic, refs, global} = root;
 
   useWhen(
     () => true,
@@ -20,7 +21,12 @@ const Home = observer(function Home_(props: IHomeProps) {
   );
 
   return (
-    <View style={{position: 'relative', flex: 1}}>
+    <View
+      style={{
+        position: 'relative',
+        flex: 1,
+        display: global.logic.currentPage === EPage.Home ? 'flex' : 'none',
+      }}>
       <FlatList
         ref={refs.listRef}
         style={{padding: 8}}

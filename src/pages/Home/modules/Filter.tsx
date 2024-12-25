@@ -1,13 +1,14 @@
 import React from 'react';
 import {observer} from '@quarkunlimit/qu-mobx';
 import {useStore} from '../store/RootStore';
-import {View} from 'react-native';
+import {Pressable, View} from 'react-native';
 import {QText} from '../../../components/QText';
 import {globalColor} from '../../../globalStyle';
+import {EPage} from '../../../interface';
 
 export const Filter = observer(function Filter_() {
   const root = useStore();
-  const {logic} = root;
+  const {global} = root;
 
   return (
     <View
@@ -21,8 +22,11 @@ export const Filter = observer(function Filter_() {
         backgroundColor: globalColor.background,
         borderBottomWidth: 1,
         borderColor: globalColor.border,
+        paddingHorizontal: 16,
       }}>
-      <QText>按拼音查</QText>
+      <Pressable onPress={() => global.logic.changePage(EPage.Pinyin)}>
+        <QText style={{color: globalColor.click}}>按拼音查</QText>
+      </Pressable>
     </View>
   );
 });

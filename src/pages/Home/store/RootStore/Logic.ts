@@ -1,4 +1,4 @@
-import {makeAutoObservable} from '@quarkunlimit/qu-mobx';
+import {makeAutoObservable, runInAction} from '@quarkunlimit/qu-mobx';
 import {ILogic, TLoadingStore} from './interface';
 import {RootStore} from './';
 import wordData from '../../../../assets/json/word.json';
@@ -23,8 +23,21 @@ export class Logic implements ILogic {
     makeAutoObservable(this, {}, {autoBind: true});
   }
 
-  init() {
-    this.words = wordData;
+  async init() {
+    const {global} = this.rootStore;
+    global.logic.showLoading('数据加载中...');
+
+    await new Promise((res, rej) => {
+      setTimeout(() => {
+        runInAction(() => {
+          this.words = wordData;
+        });
+        res(true);
+      }, 300);
+    });
+    runInAction(() => {
+      global.logic.hiddenLoading();
+    });
   }
 
   showMore() {

@@ -27,6 +27,7 @@ const App = observer(function App_(): React.JSX.Element {
   useWhen(
     () => true,
     () => {
+      logic.init();
       BackHandler.addEventListener(
         'hardwareBackPress',
         logic.hardwareBackPress,
@@ -37,8 +38,8 @@ const App = observer(function App_(): React.JSX.Element {
   return (
     <View style={backgroundStyle}>
       <LoadingModal />
-      {logic.currentPage === EPage.Home && <Home />}
-      {logic.currentPage === EPage.Pinyin && <Pinyin />}
+      {logic.renderPage?.has(EPage.Home) && <Home />}
+      {logic.renderPage?.has(EPage.Pinyin) && <Pinyin />}
     </View>
   );
 });

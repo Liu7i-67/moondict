@@ -18,6 +18,8 @@ export interface ILogic {
   currentPage: EPage;
   /** @param 点击返回的次数 */
   backCount: number;
+  /** @param 需要渲染的页面 */
+  renderPage: Set<EPage>;
   /** @function 切换当前展示的页面 */
   changePage(page: EPage): void;
   /** @function 打开弹窗 */
@@ -30,6 +32,8 @@ export interface ILogic {
   clearBackCount(): void;
   /** @function 新增返回次数 */
   addBackCount(): void;
+  /** @function 程序初始化 */
+  init(): void;
 }
 
 /** 计算属性接口 */
