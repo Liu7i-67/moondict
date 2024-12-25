@@ -10,8 +10,13 @@ export class Computed implements IComputed {
   }
 
   get showList() {
-    const {logic} = this.rootStore;
-    return logic.words;
+    const {logic, global} = this.rootStore;
+
+    if (!global.logic.filter.type) {
+      return logic.words;
+    }
+
+    return logic.words.filter(i => i.type === global.logic.filter.type);
   }
 
   get dataSource() {

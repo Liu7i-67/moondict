@@ -25,7 +25,9 @@ export const Filter = observer(function Filter_() {
         paddingHorizontal: 16,
       }}>
       <Pressable onPress={() => global.logic.changePage(EPage.Pinyin)}>
-        <QText style={{color: globalColor.click}}>按拼音查</QText>
+        <QText style={{color: globalColor.click}}>
+          按拼音查{global.logic.filter.type && `(${global.logic.filter.type})`}
+        </QText>
       </Pressable>
     </View>
   );

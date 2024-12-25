@@ -46,15 +46,33 @@ const Pinyin = observer(function Pinyin_(props: IPinyinProps) {
                 }}>
                 {t.option.map(p => {
                   return (
-                    <QText
+                    <Pressable
                       key={p}
                       style={{
                         width: '20%',
-                        marginVertical: 8,
-                        textAlign: 'center',
+                        paddingVertical: 8,
+                        marginVertical: 4,
+                        backgroundColor:
+                          global.logic.filter.type === p
+                            ? globalColor.click
+                            : 'transparent',
+                      }}
+                      onPress={() => {
+                        global.logic.selectFilterType(p);
+                        global.logic.backHome();
                       }}>
-                      {p}
-                    </QText>
+                      <QText
+                        style={{
+                          width: '100%',
+                          textAlign: 'center',
+                          color:
+                            global.logic.filter.type === p
+                              ? globalColor.background
+                              : globalColor.text,
+                        }}>
+                        {p}
+                      </QText>
+                    </Pressable>
                   );
                 })}
               </View>

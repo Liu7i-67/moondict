@@ -2,7 +2,7 @@ import {LoadingStore} from '@quarkunlimit/qu-mobx';
 import {GlobalStore} from '.';
 import {Logic} from './Logic';
 import {Computed} from './Computed';
-import {EPage} from '../interface';
+import {EPage, IFilter} from '../interface';
 
 export type TLoadingStore = LoadingStore<'loading'>;
 
@@ -20,6 +20,8 @@ export interface ILogic {
   backCount: number;
   /** @param 需要渲染的页面 */
   renderPage: Set<EPage>;
+  /** @param 搜索信息 */
+  filter: IFilter;
   /** @function 切换当前展示的页面 */
   changePage(page: EPage): void;
   /** @function 打开弹窗 */
@@ -34,6 +36,8 @@ export interface ILogic {
   addBackCount(): void;
   /** @function 程序初始化 */
   init(): void;
+  /** @function 选择过滤分类 */
+  selectFilterType(type: string): void;
 }
 
 /** 计算属性接口 */

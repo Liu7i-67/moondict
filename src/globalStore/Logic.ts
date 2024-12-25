@@ -1,7 +1,7 @@
 import {makeAutoObservable} from '@quarkunlimit/qu-mobx';
 import {ILogic, TLoadingStore} from './interface';
 import {GlobalStore} from '.';
-import {EPage} from '../interface';
+import {EPage, IFilter} from '../interface';
 export class Logic implements ILogic {
   loadingStore: TLoadingStore;
   rootStore: GlobalStore;
@@ -10,6 +10,9 @@ export class Logic implements ILogic {
   currentPage: EPage = EPage.Pinyin;
   backCount = 0;
   renderPage: Set<EPage> = new Set();
+  filter: IFilter = {
+    type: '',
+  };
 
   constructor(rootStore: GlobalStore) {
     this.rootStore = rootStore;
@@ -62,6 +65,10 @@ export class Logic implements ILogic {
 
     this.clearBackCount();
     return false;
+  }
+
+  selectFilterType(type: string) {
+    this.filter.type = type;
   }
 }
 /*#__PURE__*/ export function refresh() {}

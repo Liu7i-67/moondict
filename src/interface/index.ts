@@ -33,3 +33,8 @@ export interface IWordType {
   /** @param 拼音 */
   option: string[];
 }
+
+export interface IFilter {
+  /** @param 当前选中的拼音 */
+  type: string;
+}

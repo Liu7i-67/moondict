@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {observer, useWhen, when} from '@quarkunlimit/qu-mobx';
 import type {IHomeProps} from './interface';
 import {Provider, useStore} from './store/RootStore';
@@ -8,6 +8,8 @@ import {WordItem} from './modules/WordItem';
 import {ScrollToTop} from './modules/ScrollToTop';
 import {Filter} from './modules/Filter';
 import {EPage} from '../../interface';
+import {QText} from '../../components/QText';
+import {Footer} from './modules/Footer';
 
 const Home = observer(function Home_(props: IHomeProps) {
   const root = useStore();
@@ -20,6 +22,10 @@ const Home = observer(function Home_(props: IHomeProps) {
     },
   );
 
+  useEffect(() => {
+    logic.resetList();
+  }, [global.logic.filter.type]);
+
   return (
     <View
       style={{
@@ -31,7 +37,8 @@ const Home = observer(function Home_(props: IHomeProps) {
         ref={refs.listRef}
         style={{padding: 8}}
         ListHeaderComponent={<View style={{height: 40}}></View>}
-        initialNumToRender={15}
+        ListFooterComponent={<Footer />}
+        initialNumToRender={20}
         onEndReached={logic.showMore}
         onEndReachedThreshold={0.4}
         ListEmptyComponent={<Empty />}

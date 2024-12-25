@@ -18,6 +18,8 @@ export interface ILogic {
   pagination: IPagination;
   /** @function 初始化数据 */
   init(): void;
+  /** @function 重置列表 */
+  resetList(): void;
 }
 
 /** 计算属性接口 */

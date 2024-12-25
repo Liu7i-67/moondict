@@ -5,7 +5,7 @@ import wordData from '../../../../assets/json/word.json';
 import {IOrginWord, IPagination} from '../../../../interface';
 
 const initPagination: IPagination = {
-  pageSize: 20,
+  pageSize: 40,
   index: 1,
 };
 
@@ -46,5 +46,11 @@ export class Logic implements ILogic {
       return;
     }
     this.pagination.index = this.pagination.index + 1;
+  }
+
+  resetList() {
+    const {refs} = this.rootStore;
+    this.pagination.index = 1;
+    refs.listRef.current?.scrollToOffset({animated: false, offset: 0});
   }
 }
