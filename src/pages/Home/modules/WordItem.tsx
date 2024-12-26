@@ -56,11 +56,19 @@ export const WordItem = observer(function WordItem_(props: {item: IWord}) {
         <QText style={{width: 40, marginLeft: 16}}> {item.affix}</QText>
         <QText style={{width: 90, marginLeft: 16}}>笔画 {item.strokes}</QText>
         <Pressable
+          style={{paddingHorizontal: 16}}
           onPress={() => {
             Clipboard.setString(item.word);
             message('已复制到剪切板');
           }}>
           <QText style={{color: globalColor.click}}>复制</QText>
+        </Pressable>
+        <Pressable
+          style={{paddingHorizontal: 16}}
+          onPress={() => {
+            global.logic.showWordDetail(item.word);
+          }}>
+          <QText style={{color: globalColor.click}}>详情</QText>
         </Pressable>
       </View>
     </View>

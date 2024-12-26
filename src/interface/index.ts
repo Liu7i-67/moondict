@@ -3,6 +3,8 @@ export enum EPage {
   Home = 'Home',
   /** @param 按拼音查找 */
   Pinyin = 'Pinyin',
+  /** @param 详情页 */
+  Detail = 'Detail',
 }
 
 export interface IOrginWord {
@@ -50,4 +52,65 @@ export interface ISize {
   pageSize: number;
   /** @param 首屏加载数量 */
   initialNumToRender: number;
+}
+
+export interface IWordDetail {
+  /** @param 字 */
+  word: string;
+  /** @param 内容 */
+  detail: any[];
+  /** @param 分类 */
+  type: string;
+  /** @param 拼音 */
+  pinyin: string[];
+  /** @param 部首  */
+  radical: string;
+  /** @param 部外笔画 */
+  stroke: string;
+  /** @param 总笔画 */
+  total_stroke: string;
+  /** @param 繁部  */
+  t_radical: string;
+  /** @param 繁部外笔画 */
+  t_stroke: string;
+  /** @param 繁部总笔画 */
+  t_total_stroke: string;
+  /** @param 笔顺 */
+  stroke_order: string;
+  /** @param 繁体 */
+  traditional: string;
+  /** @param 简体 */
+  simplified: string;
+  /** @param 输入方法 */
+  input_method: {
+    /** @param 仓颉 */
+    bopomofo: string;
+    /** @param 四角号码 */
+    number: string;
+    /** @param unicode */
+    unicode: string;
+    /** @param 五笔 */
+    wubi: string;
+  };
+}
+
+export interface IDetailBlock {
+  /** @param 标题 */
+  title: string;
+  /** @param 内容 */
+  content: IContentItem[][];
+}
+
+export interface IContentItem {
+  /** @param 类型 */
+  type: EContentItem;
+  /** @param 内容 */
+  content: string;
+  /** @param 类名 */
+  class?: string[];
+}
+
+export enum EContentItem {
+  /** @param 文本 */
+  text = 'text',
 }

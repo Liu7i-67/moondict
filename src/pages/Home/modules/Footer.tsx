@@ -15,7 +15,7 @@ export const Footer = observer(function Footer_() {
   return (
     <View style={{paddingBottom: 32}}>
       <QText style={{textAlign: 'center'}}>
-        {computed.haveMore ? '数据加载中...' : '到底了小嘎~'}
+        {computed.haveMore ? '数据加载中...' : '到底了宝贝儿~'}
       </QText>
     </View>
   );

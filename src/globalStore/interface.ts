@@ -2,7 +2,7 @@ import {LoadingStore} from '@quarkunlimit/qu-mobx';
 import {GlobalStore} from '.';
 import {Logic} from './Logic';
 import {Computed} from './Computed';
-import {EPage, IFilter, ISize} from '../interface';
+import {EPage, IFilter, ISize, IWord} from '../interface';
 
 export type TLoadingStore = LoadingStore<'loading'>;
 
@@ -24,6 +24,8 @@ export interface ILogic {
   filter: IFilter;
   /** @param 紧凑模式字符展示信息 */
   wordSize: ISize;
+  /** @param 当前查看的详情信息 */
+  currentWord: string;
   /** @function 切换当前展示的页面 */
   changePage(page: EPage): void;
   /** @function 打开弹窗 */
@@ -42,6 +44,8 @@ export interface ILogic {
   selectFilterType(type: string): void;
   /** @function 修改查看模式 */
   changeCompact(): void;
+  /** @function 查看文字详情 */
+  showWordDetail(word: string): void;
 }
 
 /** 计算属性接口 */

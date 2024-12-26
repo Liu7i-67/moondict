@@ -19,10 +19,10 @@ import {Provider, useStore} from './src/globalStore/index';
 import {LoadingModal} from './src/layout/LoadingModal';
 import {EPage} from './src/interface';
 import {QText} from './src/components/QText';
-import {message} from './src/utils/tools';
 
 const Home = lazy(() => import('./src/pages/Home'));
 const Pinyin = lazy(() => import('./src/pages/Pinyin'));
+const Detail = lazy(() => import('./src/pages/Detail'));
 
 const backgroundStyle: StyleProp<ViewStyle> = {
   backgroundColor: globalColor.background,
@@ -54,6 +54,7 @@ const App = observer(function App_(): React.JSX.Element {
       <Suspense fallback={<QText>loading...</QText>}>
         {logic.renderPage?.has(EPage.Home) && <Home />}
         {logic.renderPage?.has(EPage.Pinyin) && <Pinyin />}
+        {logic.renderPage?.has(EPage.Detail) && <Detail />}
       </Suspense>
     </View>
   );

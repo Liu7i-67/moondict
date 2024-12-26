@@ -19,5 +19,6 @@ export const gloablStyle = StyleSheet.create({
   },
   text: {
     color: globalColor.text,
+    fontSize: 16,
   },
 });
