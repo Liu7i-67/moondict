@@ -1,8 +1,7 @@
 import {makeAutoObservable, runInAction} from '@quarkunlimit/qu-mobx';
 import {ILogic, TLoadingStore} from './interface';
 import {RootStore} from './';
-// import wordData from '../../../../assets/json/word.json';
-import RNFS from 'react-native-fs';
+import wordData from '../../../../assets/json/word.json';
 import {IOrginWord, IPagination} from '../../../../interface';
 
 const initPagination: IPagination = {
@@ -26,22 +25,19 @@ export class Logic implements ILogic {
 
   async init() {
     const {global} = this.rootStore;
-    const {logic} = global;
-    logic.showLoading('数据加载中...');
+    global.logic.showLoading('数据加载中...');
 
-    const filePath = `word.json`;
-
-    try {
-      const fileContent = await RNFS.readFileAssets(filePath);
-      runInAction(() => {
-        this.words = JSON.parse(fileContent);
-        logic.hiddenLoading();
-      });
-    } catch (error) {
-      runInAction(() => {
-        logic.hiddenLoading();
-      });
-    }
+    await new Promise((res, rej) => {
+      setTimeout(() => {
+        runInAction(() => {
+          this.words = wordData;
+        });
+        res(true);
+      }, 0);
+    });
+    runInAction(() => {
+      global.logic.hiddenLoading();
+    });
   }
 
   showMore() {

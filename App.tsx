@@ -19,8 +19,9 @@ import {Provider, useStore} from './src/globalStore/index';
 import {LoadingModal} from './src/layout/LoadingModal';
 import {EPage} from './src/interface';
 import {QText} from './src/components/QText';
+import Home from './src/pages/Home';
 
-const Home = lazy(() => import('./src/pages/Home'));
+// const Home = lazy(() => import('./src/pages/Home'));
 const Pinyin = lazy(() => import('./src/pages/Pinyin'));
 const Detail = lazy(() => import('./src/pages/Detail'));
 

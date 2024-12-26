@@ -3,6 +3,7 @@ import {observer} from '@quarkunlimit/qu-mobx';
 import {useStore} from '../globalStore';
 import {ActivityIndicator, Modal, View} from 'react-native';
 import {QText} from '../components/QText';
+import {globalColor} from '../globalStyle';
 
 export const LoadingModal = observer(function LoadingModal_() {
   const root = useStore();
@@ -18,8 +19,10 @@ export const LoadingModal = observer(function LoadingModal_() {
           backgroundColor: '#00000080',
           height: '100%',
         }}>
-        <ActivityIndicator size="large" color="#fff" />
-        <QText>{logic.loadingText}</QText>
+        <ActivityIndicator size="large" color={globalColor.background} />
+        <QText style={{color: globalColor.background}}>
+          {logic.loadingText}
+        </QText>
       </View>
     </Modal>
   );
