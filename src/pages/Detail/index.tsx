@@ -7,6 +7,7 @@ import {QText} from '../../components/QText';
 import {QTopBar} from '../../components/QTopBar';
 import RNFS from 'react-native-fs';
 import {BaseInfo} from './modules/BaseInfo';
+import {SubBaseInfo} from './modules/SubBaseInfo';
 
 interface IDetailProps {}
 
@@ -31,6 +32,7 @@ const Detail = observer(function Detail_(props: IDetailProps) {
           padding: 16,
         }}>
         <BaseInfo />
+        <SubBaseInfo />
       </ScrollView>
     </View>
   );

@@ -21,7 +21,7 @@ export const BaseClickRow = observer(function BaseClickRow_(props: {
       style={{
         flexDirection: 'row',
       }}>
-      <QText>{props.label}：</QText>
+      <QText style={{marginRight: 2}}>{props.label}:</QText>
       <Pressable
         onPress={() => {
           global.logic.showWordDetail(props.value);

@@ -1,14 +1,14 @@
 import React from 'react';
 import {observer} from '@quarkunlimit/qu-mobx';
 import {useStore} from '../store/RootStore';
-import {View} from 'react-native';
+import {DimensionValue, View} from 'react-native';
 import {QText} from '../../../components/QText';
-import {globalColor} from '../../../globalStyle';
 
 export const BaseTextRow = observer(function BaseTextRow_(props: {
   label: React.ReactNode;
   value?: string;
-  full?: boolean;
+  /** @param 宽度  */
+  width?: DimensionValue;
 }) {
   const root = useStore();
   const {global} = root;
@@ -21,9 +21,12 @@ export const BaseTextRow = observer(function BaseTextRow_(props: {
     <View
       style={{
         flexDirection: 'row',
+        width: props.width,
       }}>
-      <QText>{props.label}：</QText>
-      <QText>{props.value}</QText>
+      <QText style={{marginRight: 2}}>{props.label}:</QText>
+      <QText lineBreakMode="head" numberOfLines={2}>
+        {props.value}
+      </QText>
     </View>
   );
 });
