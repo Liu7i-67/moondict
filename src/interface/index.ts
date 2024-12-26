@@ -58,7 +58,7 @@ export interface IWordDetail {
   /** @param 字 */
   word: string;
   /** @param 内容 */
-  detail: any[];
+  detail: IDetailBlock[];
   /** @param 分类 */
   type: string;
   /** @param 拼音 */
@@ -113,4 +113,8 @@ export interface IContentItem {
 export enum EContentItem {
   /** @param 文本 */
   text = 'text',
+  /** @param 换行符 */
+  br = 'br',
+  /** @param 跳转 */
+  a = 'a',
 }

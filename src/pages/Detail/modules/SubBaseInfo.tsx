@@ -38,7 +38,7 @@ export const SubBaseInfo = observer(function SubBaseInfo_() {
       <BaseTextRow
         label="Unicode"
         width="45%"
-        value={logic.data?.input_method.unicode}
+        value={logic.data?.word.charCodeAt(0).toString()}
       />
       <BaseTextRow
         label="五笔"

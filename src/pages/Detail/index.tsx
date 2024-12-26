@@ -8,6 +8,7 @@ import {QTopBar} from '../../components/QTopBar';
 import RNFS from 'react-native-fs';
 import {BaseInfo} from './modules/BaseInfo';
 import {SubBaseInfo} from './modules/SubBaseInfo';
+import {BlockBox} from './modules/BlockBox';
 
 interface IDetailProps {}
 
@@ -33,6 +34,8 @@ const Detail = observer(function Detail_(props: IDetailProps) {
         }}>
         <BaseInfo />
         <SubBaseInfo />
+        <BlockBox />
+        <View style={{height: 60}}></View>
       </ScrollView>
     </View>
   );
